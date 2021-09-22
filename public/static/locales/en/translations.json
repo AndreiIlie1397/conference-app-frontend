@@ -13,10 +13,17 @@
   "MyProfile": "My Profile",
   "Forbidden": "Not allowed to see this page!",
   "NavBar": {
-    "Dashboard": "Dashboard",
+    "Welcome": "Welcome",
     "Settings": "Settings",
     "MyFirstMenu": "My First Menu"
   },
+
+  "LandingPage": {
+    "Title": "Welcome!",
+    "Subtitle": "Please enter your email:",
+    "BadEmail": "This is not a valid email!"
+  },
+  
   "Tooltips": {
     "Logout": "Logout",
     "HidePassword": "Hide password",

@@ -1,4 +1,6 @@
+import { validate } from '@material-ui/pickers'
 import { curry, without, intersection, isEmpty, not } from 'ramda'
+import { validEmailRegEx } from "./constants"
 
 export const extractExactAge = (birthday, referenceDate) => {
   var differenceInMilisecond = Date.parse(referenceDate) || Date.now() - Date.parse(birthday)
@@ -48,3 +50,7 @@ export const addMilliseconds = curry((milliseconds, date) => new Date(date.getTi
 
 // subtractOneMillisecond :: Date -> Date
 export const subtractOneMillisecond = addMilliseconds(-1)
+
+
+// validateEmail :: String -> Boolean
+export const validateEmail = email => validEmailRegEx.test(email)

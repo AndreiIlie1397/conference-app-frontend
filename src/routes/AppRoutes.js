@@ -4,7 +4,7 @@ import { Switch, Redirect } from 'react-router-dom'
 
 import CustomRoute from '../components/routing/CustomRoute'
 
-import Dashboard from 'features/dashboard/Dashboard'
+import Welcome from 'features/welcome/Welcome'
 import Settings from 'features/settings/Settings'
 import HelloWorld from 'features/helloWorld/HelloWorld'
 
@@ -19,10 +19,10 @@ const { viewSettings } = permissions
 export default function AppRoutes() {
   return (
     <Switch>
-      <CustomRoute isPrivate={false} exact path='/dashboard' component={Dashboard} />
+      <CustomRoute isPrivate={false} exact path='/welcome' component={Welcome} />
       <CustomRoute isPrivate={false} exact path='/settings' component={Settings} />
       <CustomRoute isPrivate={false} exact path='/helloWorld' component={HelloWorld} />
-      <Redirect exact from='/' to='/dashboard' />
+      <Redirect exact from='/' to='/welcome' />
       <CustomRoute isPrivate={false} exact path='/forbidden' component={Forbidden} />
       <CustomRoute isPrivate={false} render={() => <NotFound title='PageNotFound'></NotFound>} />
     </Switch>
