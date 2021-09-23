@@ -15,13 +15,33 @@
   "NavBar": {
     "Welcome": "Welcome",
     "Settings": "Settings",
-    "MyFirstMenu": "My First Menu"
+    "MyFirstMenu": "My First Menu",
+    "Conference": "Conference"
   },
 
   "LandingPage": {
     "Title": "Welcome!",
     "Subtitle": "Please enter your email:",
     "BadEmail": "This is not a valid email!"
+  },
+
+  "ConferencePage": {
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "applyFilters": "Apply Filters",
+    "resetFilters": "Reset Filters"
+  },
+
+  "Conferences": {
+    "Speaker": "Speaker: ",
+    "Attend": "Attend",
+    "Join": "Join",
+    "Withdraw": "Withdraw",
+	  "StatusNotSet": "Not attending"
+  }, 
+  
+  "UserMenu": {
+    "User": "User"
   },
   
   "Tooltips": {
