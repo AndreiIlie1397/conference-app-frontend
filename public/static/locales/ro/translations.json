@@ -9,7 +9,8 @@
     "Settings": "Setari",
     "User": "Profil",
     "MyFirstMenu": "Primul meu meniu",
-    "Conference": "Conferinte"
+    "Conference": "Conferinte",
+    "MyConference": "Conferintele mele"
   },
 
   "LandingPage": {
@@ -26,15 +27,50 @@
   },
 
   "Conferences": {
-    "Speaker": "Orator:",
+    "Speaker": "Orator",
     "Attend": "Participa",
     "Join": "Inscrie-te",
     "Withdraw": "Retrage-te",
-    "StatusNotSet": "Nu participi"
+    "StatusNotSet": "Nu participi",
+    "AddConference": "Adauga conferinta",
+    "Info": "Informatii",
+    "Location": "Locatie",
+    "Name": "Nume conferinta",
+    "StartDate": "Data inceput",
+    "EndDate": "Data sfarsit",
+    "Type": "Tipul conferintei",
+    "Category": "Categorie"
   }, 
+
+  "General":{
+    "Button":{
+      "Save": "Salveaza",
+      "Edit": "Editeaza",
+      "Delete": "Sterge",
+      "AddSpeaker": "Adauga orator",
+      "DeleteSpeaker": "Sterge orator"
+    }
+  },
 
   "UserMenu": {
     "User": "Utilizator"
+  },
+
+  "Location": {
+    "Name": "Nume",
+    "Address": "Adresa",
+    "Country": "Tara",
+    "County": "Judet",
+    "City": "Oras",
+    "Latitude": "Latitudine",
+    "Longitude": "Longitudine"
+  },
+
+  "Speaker": {
+    "Name": "Nume",
+    "Nationality": "Nationalitate",
+    "Rating": "Rating",
+    "MainSpeaker": "Orator principal"
   },
 
   "Tooltips": {

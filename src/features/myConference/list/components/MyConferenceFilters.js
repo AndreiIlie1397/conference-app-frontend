@@ -8,7 +8,7 @@ import Button from '@bit/totalsoft_oss.react-mui.button'
 import PropTypes from 'prop-types'
 import { generateDefaultFilters } from 'utils/functions'
 
-const ConferenceFilters = props => {
+const MyConferenceFilters = props => {
   const { t } = useTranslation()
   const { filters, onApplyFilters } = props
   const [startDate, setStartDate] = useState(filters.startDate)
@@ -47,10 +47,10 @@ const ConferenceFilters = props => {
     </>
   )
 }
-ConferenceFilters.propTypes = {
+MyConferenceFilters.propTypes = {
   filters: PropTypes.object,
   onApplyFilters: PropTypes.func
 }
-export default ConferenceFilters
+export default MyConferenceFilters
 
 

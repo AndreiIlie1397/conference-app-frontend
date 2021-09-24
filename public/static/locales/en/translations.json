@@ -16,7 +16,8 @@
     "Welcome": "Welcome",
     "Settings": "Settings",
     "MyFirstMenu": "My First Menu",
-    "Conference": "Conference"
+    "Conference": "Conference",
+    "MyConference": "My Conference"
   },
 
   "LandingPage": {
@@ -37,11 +38,45 @@
     "Attend": "Attend",
     "Join": "Join",
     "Withdraw": "Withdraw",
-	  "StatusNotSet": "Not attending"
+	  "StatusNotSet": "Not attending",
+    "AddConference": "Add Conference",
+    "Info": "Info",
+    "Location": "Location",
+    "Name": "Conference name",
+    "StartDate": "Start date",
+    "EndDate": "End date",
+    "Type": "Conference type",
+    "Category": "Category"
   }, 
   
+"General":{
+  "Button":{
+    "Save": "Save",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "AddSpeaker": "AddSpeaker",
+    "DeleteSpeaker": "Delete speaker"
+  }
+},
   "UserMenu": {
     "User": "User"
+  },
+
+  "Location": {
+    "Name": "Name",
+    "Address": "Address",
+    "Country": "Country",
+    "County": "County",
+    "City": "City",
+    "Latitude": "Latitude",
+    "Longitude": "Longitude"
+  },
+
+  "Speaker": {
+    "Name": "Name",
+    "Nationality": "Nationality",
+    "Rating": "Rating",
+    "MainSpeaker": "Main Speaker"
   },
   
   "Tooltips": {
