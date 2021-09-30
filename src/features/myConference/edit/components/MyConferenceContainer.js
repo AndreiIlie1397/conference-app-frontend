@@ -7,7 +7,7 @@ import React, { useEffect, useReducer } from 'react'
 import { useTranslation } from 'react-i18next'
 import { initialConference, reducer } from '../conferenceState'
 import { useRouteMatch } from 'react-router'
-import { types, categories, countries, counties, cities } from 'utils/mocks/conferenceDictionares';
+import { types, categories, countries, counties, cities } from 'utils/mocks/conferenceDictionaries';
 import {conference as mockConference} from 'utils/mocks/myConference'
 
 const MyConferenceContainer = () => {
@@ -40,9 +40,7 @@ const MyConferenceContainer = () => {
         }
     }
 
-
     if (loading) return <LoadingFakeText lines={10} />
-
 
     return <MyConference
         conference={conference}

@@ -47,12 +47,6 @@ export const reducer = (state, action) => {
                 deletedSpeakers: action.payload > 0 ? [...state.deletedSpeakers, action.payload] : state.deletedSpeakers
             }
         }
-        // case 'speakerName':
-        // return {
-        //     ...state,
-        //     speakers: state.speakers.map(s => (s.id === action.payload.id ? { ...s, name: action.payload.name } : s))
-        // }
-
         case 'speakerName':
         case 'nationality':
         case 'rating':

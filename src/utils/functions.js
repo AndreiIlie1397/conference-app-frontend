@@ -63,3 +63,5 @@ export const generateDefaultFilters = () => {
     endDate: today.add(2, 'day').format('YYYY-MM-DD')
   }
 }
+
+export const extractPager = ({ page, pageSize }) => ({ page, pageSize })
