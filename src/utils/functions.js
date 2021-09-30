@@ -1,4 +1,3 @@
-import { validate } from '@material-ui/pickers'
 import { curry, without, intersection, isEmpty, not } from 'ramda'
 import { validEmailRegEx } from "./constants"
 import moment from 'moment'

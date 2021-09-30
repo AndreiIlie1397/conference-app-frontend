@@ -40,7 +40,8 @@ const handleAddClick = useCallback(()=>{
                 actions={<AddButton key='addButton' title={t("Conferences.AddConference")} onClick={handleAddClick}/>}
             />
         )
-    }, [setHeader, t])
+
+    }, [setHeader, t])     // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleApplyFilters = useCallback((value) => {
         setFilters(value)
