@@ -35,7 +35,7 @@ function Welcome() {
         <Typography variant="h5">{t("LandingPage.Title")}</Typography>
       </Grid>
 
-      <Grid item container justify="center" alignContent="center" alignItems="center" direction="column" spacing={2}>
+      <Grid item container justifyContent="center" alignContent="center" alignItems="center" direction="column" spacing={2}>
         <Grid item>
           <Typography variant="caption">{t("LandingPage.Subtitle")}</Typography>
         </Grid>

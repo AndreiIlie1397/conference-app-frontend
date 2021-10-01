@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import CustomTextField from '@bit/totalsoft_oss.react-mui.custom-text-field';
 import Autocomplete from '@bit/totalsoft_oss.react-mui.autocomplete';
 import { onTextBoxChange } from 'utils/propertyChangeAdapters';
+import { emptyString } from 'utils/constants';
 
 const MyConferenceLocation = (props) => {
     const { countries, counties, cities, location, dispatch } = props
@@ -18,14 +19,14 @@ const MyConferenceLocation = (props) => {
                 <CustomTextField
                     label={t('Location.Name')}
                     fullWidth
-                    value={name} onChange={onTextBoxChange(handleDispatch('locationName'))}
+                    value={name ?? emptyString} onChange={onTextBoxChange(handleDispatch('locationName'))}
                 />
             </Grid>
             <Grid item xs={12} sm={6} lg={6}>
                 <CustomTextField
                     label={t('Location.Address')}
                     fullWidth
-                    value={address} onChange={onTextBoxChange(handleDispatch('address'))}
+                    value={address ?? emptyString} onChange={onTextBoxChange(handleDispatch('address'))}
                 />
             </Grid>
         </Grid>
@@ -63,14 +64,14 @@ const MyConferenceLocation = (props) => {
                 <CustomTextField
                     label={t('Location.Latitude')}
                     fullWidth
-                    value={latitude} onChange={onTextBoxChange(handleDispatch('latitude'))}
+                    value={latitude ?? emptyString} onChange={onTextBoxChange(handleDispatch('latitude'))}
                 />
             </Grid>
             <Grid item xs={12} sm={6} lg={3}>
                 <CustomTextField
                     label={t('Location.Longitude')}
                     fullWidth
-                    value={longitude} onChange={onTextBoxChange(handleDispatch('longitude'))}
+                    value={longitude ?? emptyString} onChange={onTextBoxChange(handleDispatch('longitude'))}
                 />
             </Grid>
         </Grid>
