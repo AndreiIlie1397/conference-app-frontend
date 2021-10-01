@@ -7,8 +7,8 @@ import React, { useEffect, useReducer } from 'react'
 import { useTranslation } from 'react-i18next'
 import { initialConference, reducer } from '../conferenceState'
 import { useRouteMatch } from 'react-router'
-import { types, categories, countries, counties, cities } from 'utils/mocks/conferenceDictionaries';
-import {conference as mockConference} from 'utils/mocks/myConference'
+import { useQueryWithErrorHandling } from 'hooks/errorHandling'
+import { MY_CONFERENCE_QUERY } from 'features/myConference/gql/queries/MyConferenceQuery'
 
 const MyConferenceContainer = () => {
     const { t } = useTranslation()
@@ -19,28 +19,15 @@ const MyConferenceContainer = () => {
     const conferenceId = match.params.id;
     const isNew = conferenceId === 'new';
 
-    useEffect(()=>{
-        if(!isNew){
-            dispatch({type:'resetConference', payload: mockConference})
-        }
-
-   
-    },[]) // eslint-disable-line react-hooks/exhaustive-deps
+    const {data, loading: loadingConference } = useQueryWithErrorHandling(MY_CONFERENCE_QUERY, {
+        variables: { id: conferenceId, isNew },
+        onCompleted: result => result?.conference && dispatch({ type: 'resetConference', payload: result.conference })
+    })
 
     useEffect(() => setHeader(null), [])  // eslint-disable-line react-hooks/exhaustive-deps
     useEffect(() => { setHeader(<MyConferenceHeader title={conference.name} actions={<SaveButton title={t('General.Button.Save')} />} />) }, [conference.name, setHeader, t])
 
-    const { data, loading } = {
-        loading: false, data: {
-            typeList: types,
-            categoryList: categories,
-            countryList: countries,
-            countyList: counties,
-            cityList: cities
-        }
-    }
-
-    if (loading) return <LoadingFakeText lines={10} />
+    if (loadingConference) return <LoadingFakeText lines={10} />
 
     return <MyConference
         conference={conference}
