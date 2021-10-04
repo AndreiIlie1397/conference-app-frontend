@@ -5,17 +5,30 @@ import LoadingFakeText from '@bit/totalsoft_oss.react-mui.fake-text'
 import { extractPager, generateDefaultFilters } from 'utils/functions'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import { CONFERENCE_LIST_QUERY } from '../gql/queries/ConferenceListQuery'
+import { ATTEND_CONFERENCE } from '../gql/mutations/AttendConference'
 import { useEmail } from 'hooks/useEmail'
 import { useFooter } from 'providers/AreasProvider'
 import Pagination from '@bit/totalsoft_oss.react-mui.pagination'
+import { useError } from 'hooks/errorHandling'
+import { useMutation } from '@apollo/client'
+import DialogDisplay from '@bit/totalsoft_oss.react-mui.dialog-display'
+import ConferenceCodeModal from './ConferenceCodeModal'
+import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
+import { useTranslation } from 'react-i18next'
+import { emptyString } from 'utils/constants'
 
 const ConferenceListContainer = () => {
 
+    const showError = useError()
+    const [code, setCode] = useState()
+    const [open, setOpen] = useState(false)
     const [filters, setFilters] = useState(generateDefaultFilters())
     const [pager, setPager] = useState({ totalCount: 0, page: 0, pageSize: 3 })
 
     const [email] = useEmail()
     const [, setFooter] = useFooter()
+    const addToast = useToast()
+    const { t } = useTranslation()
 
     useEffect(() => () => setFooter(null), [])     // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -39,6 +52,28 @@ const ConferenceListContainer = () => {
         }
     })
 
+    const [attend] = useMutation(ATTEND_CONFERENCE, {
+        onError: showError,
+        onCompleted: result => {
+            if (result?.attend) {
+                setCode(result?.attend)
+                setOpen(true)
+                addToast(t('Conferences.SuccessfullyAttended'), 'success')
+            }
+        }
+    })
+
+    const handleAttend = useCallback(conferenceId => () => {
+        attend({
+            variables: {
+                input: {
+                    conferenceId,
+                    attendeeEmail: email
+                }
+            }
+        })
+    }, [attend, email])
+
     useEffect(() => {
         setFooter(<Pagination
             totalCount={pager.totalCount}
@@ -56,13 +91,20 @@ const ConferenceListContainer = () => {
         setFilters(value)
     }, [])
 
+    const handleClose = useCallback(() => {
+        setOpen(false)
+        setCode(emptyString)
+        refetch()
+    }, [refetch])
+
     if (loading || !data) {
         return <LoadingFakeText lines={10} />
     }
     return (
         <>
             <ConferenceFilters filters={filters} onApplyFilters={handleApplyFilters} />
-            <ConferenceList conferences={data?.conferenceList?.values} />
+            <ConferenceList conferences={data?.conferenceList?.values} onAttend={handleAttend} />
+            <DialogDisplay id="showQRCode" title={t('General.Congratulations')} open={open} onClose={handleClose} content={<ConferenceCodeModal code={code} />} />
         </>
     )
 

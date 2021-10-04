@@ -24,7 +24,7 @@ const MyConferenceContainer = () => {
         onCompleted: result => result?.conference && dispatch({ type: 'resetConference', payload: result.conference })
     })
 
-    useEffect(() => setHeader(null), [])  // eslint-disable-line react-hooks/exhaustive-deps
+    useEffect(() => ()=>setHeader(null), [])  // eslint-disable-line react-hooks/exhaustive-deps
     useEffect(() => { setHeader(<MyConferenceHeader title={conference.name} actions={<SaveButton title={t('General.Button.Save')} />} />) }, [conference.name, setHeader, t])
 
     if (loadingConference) return <LoadingFakeText lines={10} />
