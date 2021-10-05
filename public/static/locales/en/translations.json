@@ -49,7 +49,8 @@
     "Category": "Category",
     "SuccessfullyAttended": "Congratulations! You successfully attended to the conference! You will be notified to join 5 minutes before it starts.",
     "QRCodeMessage": "You successfully attended to the conference! You will be notified to join 5 minutes before it starts. Use the following code to access the conference: {{code}}",
-    "SuccessfullyWithdraw": "Congratulations! You successfully withdrawn to the conference!"
+    "SuccessfullyWithdraw": "Congratulations! You successfully withdrawn to the conference!",
+    "SavingSucceeded": "Conference was successfully saved!"
   }, 
   
 "General":{

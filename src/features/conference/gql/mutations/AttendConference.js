@@ -4,33 +4,33 @@ import CommonFragments from 'features/common/fragments'
 
 const ATTEND_CONFERENCE = gql`
 mutation attend($input: Attendee!){
-    attend(input: $input){
+  attend(input: $input){
     code
     suggestedConferences {
-        ...conference
+      ...conference
       location {
-     ...location
+        ...location
         country {
-         ...country
+          ...country
         }
         county {
-       ...county
+          ...county
         }
         city {
-         ...city
+          ...city
         }
       }
       type {
         ...type
       }
       category {
-       ...category
+        ...category
       }
       speakers {
-      ...speaker
+        ...speaker
       }
     }
-}   
+  }   
 }
   ${ConferenceFragments.conference}
   ${ConferenceFragments.location}

@@ -22,7 +22,7 @@ const ConferenceItem = (props) => {
 ConferenceItem.propTypes = {
     conference: PropTypes.object.isRequired,
     onAttend: PropTypes.func.isRequired,
-    onWithdraw:PropTypes.func.isRequired
+    onWithdraw:PropTypes.func
 }
 
 export default ConferenceItem;

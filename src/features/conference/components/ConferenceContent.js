@@ -41,6 +41,6 @@ const ConferenceContent = props => {
 ConferenceContent.propTypes = {
     conference: PropTypes.object.isRequired,
     onAttend: PropTypes.func.isRequired,
-    onWithdraw: PropTypes.func.isRequired
+    onWithdraw: PropTypes.func
 }
 export default ConferenceContent
