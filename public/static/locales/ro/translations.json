@@ -41,7 +41,8 @@
     "Type": "Tipul conferintei",
     "Category": "Categorie",
     "SuccessfullyAttended": "Felicitari! Te-ai inscris cu succes la conferinta! Vei fi notificat cu 5 minute inainte sa inceapa.",
-    "QRCodeMessage": "Te-ai inscris cu succes la conferinta! Vei fi notificat cu 5 minute inainte sa inceapa. Foloseste urmatorul cod pentru a accesa conferinta: {{code}}"
+    "QRCodeMessage": "Te-ai inscris cu succes la conferinta! Vei fi notificat cu 5 minute inainte sa inceapa. Foloseste urmatorul cod pentru a accesa conferinta: {{code}}",
+    "SuccessfullyWithdraw": "Felicitari! Te-ai retras cu succes de la conferinta!"
   }, 
 
   "General":{
@@ -52,6 +53,7 @@
       "AddSpeaker": "Adauga orator",
       "DeleteSpeaker": "Sterge orator"
     },
+    "SuggestedConference": "Pe baza alegerilor facute va sugeram urmatoarele conferinte",
     "Congratulations": "Felicitari!"
   },
 

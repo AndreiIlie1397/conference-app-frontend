@@ -5,7 +5,7 @@ import ConferenceSubtitle from './ConferenceSubtitle'
 import ConferenceContent from './ConferenceContent'
 
 const ConferenceItem = (props) => {
-    const { conference, onAttend } = props
+    const { conference, onAttend, onWithdraw } = props
     const { name, speakers, location } = conference
     const speaker = speakers.find(item => item.isMainSpeaker)
 
@@ -14,13 +14,15 @@ const ConferenceItem = (props) => {
             <ConferenceContent
                 conference={conference}
                 onAttend={onAttend}
+                onWithdraw={onWithdraw}
             />}
     />
 }
 
 ConferenceItem.propTypes = {
     conference: PropTypes.object.isRequired,
-    onAttend: PropTypes.func.isRequired
+    onAttend: PropTypes.func.isRequired,
+    onWithdraw:PropTypes.func.isRequired
 }
 
 export default ConferenceItem;
