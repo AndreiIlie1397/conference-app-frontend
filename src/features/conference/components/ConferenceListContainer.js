@@ -7,6 +7,7 @@ import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import { CONFERENCE_LIST_QUERY } from '../gql/queries/ConferenceListQuery'
 import ATTEND_CONFERENCE from '../gql/mutations/AttendConference'
 import WITHDRAW_CONFERENCE from '../gql/mutations/WithdrawConference'
+import JOIN_CONFERENCE from '../gql/mutations/JoinConference'
 import { useEmail } from 'hooks/useEmail'
 import { useFooter } from 'providers/AreasProvider'
 import Pagination from '@bit/totalsoft_oss.react-mui.pagination'
@@ -75,6 +76,14 @@ const ConferenceListContainer = () => {
         }
     })
 
+    const [join] = useMutation(JOIN_CONFERENCE, {
+        onError: showError,
+        onCompleted: () => {
+                addToast(t('Conferences.SuccessfullyJoin'), 'success')
+                refetch()
+        }
+    })
+
     const handleAttend = useCallback(conferenceId => () => {
         attend({
             variables: {
@@ -96,6 +105,17 @@ const ConferenceListContainer = () => {
             }
         })
     },[withdraw, email])
+
+    const handleJoin = useCallback(conferenceId =>() => {
+        join({
+            variables: {
+                input: {
+                    conferenceId,
+                    attendeeEmail: email
+                }
+            }
+        })
+    },[join, email])
 
     useEffect(() => {
         setFooter(<Pagination
@@ -123,12 +143,17 @@ const ConferenceListContainer = () => {
     if (loading || !data) {
         return <LoadingFakeText lines={10} />
     }
+
+   
+
     return (
         <>
             <ConferenceFilters filters={filters} onApplyFilters={handleApplyFilters} />
-            <ConferenceList conferences={data?.conferenceList?.values} onAttend={handleAttend} onWithdraw={handleWithdraw}/>
-            <DialogDisplay id="showQRCode" title={t('General.Congratulations')} open={open} onClose={handleClose} content={<ConferenceCodeModal code={code} suggestedConferences={suggestedConferences} onAttend={handleAttend}/>} />
+            <ConferenceList conferences={data?.conferenceList?.values} onAttend={handleAttend} onWithdraw={handleWithdraw} onJoin={handleJoin}/>
+            <DialogDisplay id="showQRCode" title={t('General.Congratulations')} open={open} onClose={handleClose} content={<ConferenceCodeModal code={code} suggestedConferences={suggestedConferences} onAttend={handleAttend} />} />
+           
         </>
     )
 }
+
 export default ConferenceListContainer

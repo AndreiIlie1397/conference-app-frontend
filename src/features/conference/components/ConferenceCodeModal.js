@@ -37,7 +37,7 @@ const ConferenceCodeModal = ({ code, suggestedConferences, onAttend }) => {
 ConferenceCodeModal.propTypes = {
     code: PropTypes.string,
     suggestedConferences: PropTypes.array,
-    onAttend: PropTypes.func,
+    onAttend: PropTypes.func
 }
 
 export default ConferenceCodeModal
