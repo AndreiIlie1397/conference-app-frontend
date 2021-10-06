@@ -18,6 +18,7 @@ import ConferenceCodeModal from './ConferenceCodeModal'
 import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
 import { useTranslation } from 'react-i18next'
 import { emptyArray, emptyString } from 'utils/constants'
+import { useHistory } from 'react-router-dom'
 
 const ConferenceListContainer = () => {
 
@@ -33,6 +34,7 @@ const ConferenceListContainer = () => {
     const [, setFooter] = useFooter()
     const addToast = useToast()
     const { t } = useTranslation()
+    const history = useHistory()
 
     useEffect(() => () => setFooter(null), [])     // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -71,16 +73,16 @@ const ConferenceListContainer = () => {
     const [withdraw] = useMutation(WITHDRAW_CONFERENCE, {
         onError: showError,
         onCompleted: () => {
-                addToast(t('Conferences.SuccessfullyWithdraw'), 'success')
-                refetch()
+            addToast(t('Conferences.SuccessfullyWithdraw'), 'success')
+            refetch()
         }
     })
 
     const [join] = useMutation(JOIN_CONFERENCE, {
         onError: showError,
         onCompleted: () => {
-                addToast(t('Conferences.SuccessfullyJoin'), 'success')
-                refetch()
+            refetch()
+            addToast(t('Conferences.SuccessfullyJoin'), 'success')
         }
     })
 
@@ -95,7 +97,7 @@ const ConferenceListContainer = () => {
         })
     }, [attend, email])
 
-    const handleWithdraw = useCallback(conferenceId =>() => {
+    const handleWithdraw = useCallback(conferenceId => () => {
         withdraw({
             variables: {
                 input: {
@@ -104,9 +106,9 @@ const ConferenceListContainer = () => {
                 }
             }
         })
-    },[withdraw, email])
+    }, [withdraw, email])
 
-    const handleJoin = useCallback(conferenceId =>() => {
+    const handleJoin = useCallback(conferenceId => () => {
         join({
             variables: {
                 input: {
@@ -115,7 +117,9 @@ const ConferenceListContainer = () => {
                 }
             }
         })
-    },[join, email])
+        refetch()
+        history.push(`/conferences/${conferenceId}`)
+    }, [join, email, history, refetch])
 
     useEffect(() => {
         setFooter(<Pagination
@@ -144,14 +148,11 @@ const ConferenceListContainer = () => {
         return <LoadingFakeText lines={10} />
     }
 
-   
-
     return (
         <>
             <ConferenceFilters filters={filters} onApplyFilters={handleApplyFilters} />
             <ConferenceList conferences={data?.conferenceList?.values} onAttend={handleAttend} onWithdraw={handleWithdraw} onJoin={handleJoin}/>
             <DialogDisplay id="showQRCode" title={t('General.Congratulations')} open={open} onClose={handleClose} content={<ConferenceCodeModal code={code} suggestedConferences={suggestedConferences} onAttend={handleAttend} />} />
-           
         </>
     )
 }

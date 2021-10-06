@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { useTranslation } from 'react-i18next'
 import CardTitle from '@bit/totalsoft_oss.react-mui.card-title'
-import { Face, Info, LocationOn} from '@material-ui/icons'
+import { Face, Info, LocationOn } from '@material-ui/icons'
 import AddButton from '@bit/totalsoft_oss.react-mui.add-button'
 
 import MyConferenceInfo from 'features/myConference/edit/components/MyConferenceInfo'
@@ -13,9 +13,9 @@ import MyConferenceSpeakers from 'features/myConference/edit/components/MyConfer
 
 const MyConference = (props) => {
     const { types, categories, countries, counties, cities, conference, dispatch } = props
-    const {location, speakers} = conference
+    const { location, speakers } = conference
     const { t } = useTranslation()
-    const handleAddSpeaker = useCallback(() =>  dispatch({ type: 'addSpeaker' }), [dispatch] )
+    const handleAddSpeaker = useCallback(() => dispatch({ type: 'addSpeaker' }), [dispatch])
 
     return (<>
 

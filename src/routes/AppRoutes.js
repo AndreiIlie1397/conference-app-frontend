@@ -10,15 +10,9 @@ import Settings from 'features/settings/Settings'
 import ConferenceListContainer from 'features/conference/components/ConferenceListContainer'
 import MyConferenceListContainer from 'features/myConference/list/components/MyConferenceListContainer'
 import MyConferenceContainer from 'features/myConference/edit/components/MyConferenceContainer'
-
+import ConferencePage from 'features/conference/components/ConferencePage'
 import { Forbidden, NotFound } from '@bit/totalsoft_oss.react-mui.kit.core'
-//import identityUserRoles from 'constants/identityUserRoles'
-//import permissions from 'constants/permissions'
 import { useEmail } from 'hooks/useEmail'
-
-
-//const { globalAdmin, admin, user } = identityUserRoles
-//const { viewSettings } = permissions
 
 export default function AppRoutes() {
   const [email] = useEmail()
@@ -40,6 +34,8 @@ export default function AppRoutes() {
       <CustomRoute isPrivate={false} exact path='/myConferences' component={MyConferenceListContainer} />
       <CustomRoute isPrivate={false} exact path='/myConferences/:id(new)' component={MyConferenceContainer}/>
       <CustomRoute isPrivate={false} exact path='/myConferences/:id(\d+)' component={MyConferenceContainer}/>
+
+      <CustomRoute isPrivate={false} exact path='/conferences/:id(\d+)' component={ConferencePage}/>
 
       <Redirect exact from='/' to='/welcome' />
       <CustomRoute isPrivate={false} exact path='/forbidden' component={Forbidden} />
