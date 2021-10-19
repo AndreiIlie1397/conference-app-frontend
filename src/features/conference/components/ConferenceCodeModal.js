@@ -20,12 +20,12 @@ const ConferenceCodeModal = ({ code, suggestedConferences, onAttend }) => {
                 </Grid>
             </Grid>
             {!isEmpty(suggestedConferences) && (
-                <Grid container>
+                <Grid container justifyContent='center'>
                     <Grid item lg={12}>
                         <Typography>{t('General.SuggestedConference')}</Typography>
                     </Grid>
                     {suggestedConferences.map(conference => (
-                        <Grid item key={conference?.id}>
+                        <Grid item xs={12} lg={4} key={conference?.id}>
                             <ConferenceItem conference={conference} onAttend={onAttend} />
                         </Grid>
                     ))}
