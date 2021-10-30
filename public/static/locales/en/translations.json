@@ -63,6 +63,8 @@
     "AddSpeaker": "AddSpeaker",
     "DeleteSpeaker": "Delete speaker"
   },
+  "Organizer" : "Organizer",
+  "Participants": "Participants",
   "SuggestedConference": "Based on your choice, we suggest the following conferences",
   "Congratulations": "Congratulations!"
 },

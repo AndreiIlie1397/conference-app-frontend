@@ -55,6 +55,7 @@ const ConferenceListContainer = () => {
         onCompleted: (result) => {
             const totalCount = result?.conferenceList?.pagination?.totalCount
             setPager(state => ({ ...state, totalCount }))
+            refetch()
         }
     })
 
@@ -81,9 +82,9 @@ const ConferenceListContainer = () => {
     const [join] = useMutation(JOIN_CONFERENCE, {
         onError: showError,
         onCompleted: () => {
-            refetch()
             addToast(t('Conferences.SuccessfullyJoin'), 'success')
-        }
+            refetch()
+        },
     })
 
     const handleAttend = useCallback(conferenceId => () => {
